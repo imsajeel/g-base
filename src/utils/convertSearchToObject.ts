@@ -1,5 +1,5 @@
 const convertSearchToObject = (text: string) => {
-  const search = location.search.substring(1);
+  const search = text.substring(1);
   const searchedObj = JSON.parse(
     '{"' +
       decodeURI(search)
