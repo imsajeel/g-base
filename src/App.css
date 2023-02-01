@@ -1,38 +1,177 @@
-.App {
-  text-align: center;
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+    --form-control-color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    font-family: Lato, Arial, Helvetica, sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.full-screen {
+    min-width: 100vw;
+    min-height: 100vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    padding: 1rem;
+    transition: all 300ms;
+}
+
+.container-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.container-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-content>* {
+    margin: 0.5rem 0rem;
+}
+
+input {
+    padding: 0.5rem;
+    border: 1px solid gray;
+    border-radius: 0.5rem;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding: 0.7rem;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    transition: all 300ms;
+}
+
+button.transparent {
+    background-color: transparent;
+    color: black;
+}
+
+button.transparent-bordered {
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+}
+
+button:hover {
+    background-color: rgb(57, 57, 57);
+    color: white;
+}
+
+button:active {
+    background-color: rgb(20, 20, 20);
+    color: white;
+}
+
+select {
+    padding: 0.5rem;
+    border: 1px solid gray;
+    border-radius: 0.5rem;
+}
+
+select option {
+
+    padding: 0.5rem;
+}
+
+.form-control {
+    /* font-family: system-ui, sans-serif; */
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.1;
+    margin: 0.5rem;
+    display: grid;
+    grid-template-columns: 1em auto;
+
+    gap: 0.5em;
+}
+
+.dashboard {
+    min-height: 100vh;
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-bar {
+    background-color: black;
+    color: white;
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.menu-item {
+    font-size: 1.3rem;
+    border: 1px solid transparent;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    transition: all 300ms;
+}
+
+.menu-item:hover {
+    border: 1px solid white;
+    transform: scale(1.1);
+}
+
+.dashboard-content {
+    margin: 1rem 1rem 1rem 0rem;
+    padding: 0.5rem;
+    height: calc(100vh - 2.5rem);
+    width: 100%;
+    overflow-y: scroll;
+
+}
+
+@media only screen and (max-width: 600px) {
+    .dashboard {
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+    }
+
+    .menu-bar {
+        flex-direction: row;
+    }
+
+    .dashboard-content {
+        height: calc(100vh - 8rem);
+        margin: 0rem;
+    }
+
+}
+
+
+.model-back {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
 }
