@@ -22,7 +22,7 @@ const Login: React.FC<Props> = ({ isAuth }) => {
   const [loginFrom, setLoginFrom] = useState<any>(InitialLoginFromState);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { logInUser, user, addSite, site } = useContext(GlobalContext);
+  const { logInUser, user, addSite } = useContext(GlobalContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -37,12 +37,19 @@ const Login: React.FC<Props> = ({ isAuth }) => {
     setErrorMessage("");
     console.log(loginFrom);
     let res = await AuthService.login(loginFrom);
-    let resTransTypes = await TransactionService.getTransactionTypes();
-    if (res && resTransTypes) {
+    if (res) {
       if (res.data.userData && res.data.siteData && logInUser && addSite) {
         logInUser(res.data.userData);
-        updateLocalStorage("transType", resTransTypes.data);
         addSite(res.data.siteData);
+
+        let resTransTypes = await TransactionService.getTransactionTypes();
+
+        if (resTransTypes) {
+          updateLocalStorage("transType", resTransTypes.data);
+        } else {
+          console.log(resTransTypes);
+        }
+
         navigate("/dashboard");
       } else {
         res.data.message && setErrorMessage(res.data.message);
@@ -96,7 +103,7 @@ const Login: React.FC<Props> = ({ isAuth }) => {
           <button onClick={handleLoginButton}>Login</button>
           <p>
             Powered by:{" "}
-            <a href="https://sourcecode.build" target="_blank">
+            <a href="https://sourcecode.build" rel="noreferrer" target="_blank">
               sourcecode.build
             </a>
           </p>

@@ -6,7 +6,10 @@ import "./Transaction.css";
 
 const AddTransaction = () => {
   const { user } = useContext(GlobalContext);
-  const transTypesData = JSON.parse(localStorage["transType"]);
+  const transTypesDataFromLS = localStorage["transType"];
+  const transTypesData = transTypesDataFromLS
+    ? JSON.parse(transTypesDataFromLS)
+    : "";
 
   const [formData, setFormData] = useState<transactionData>();
   const [displayMessage, setDisplayMessage] = useState({ type: "", text: "" });
