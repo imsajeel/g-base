@@ -115,7 +115,7 @@ select option {
 }
 
 .dashboard {
-    height: 100vh;
+    min-height: 100vh;
     /* position: relative; */
 
     display: flex;
@@ -129,6 +129,7 @@ select option {
     padding: 0.5rem;
     border-radius: 0rem 1rem 1rem 0rem;
     display: flex;
+
     flex-direction: column;
     justify-content: space-around;
 }
@@ -164,10 +165,17 @@ select option {
     .menu-bar {
         flex-direction: row;
         border-radius: 1rem 1rem 0rem 0rem;
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
     }
 
     .dashboard-content {
-        margin: 0rem;
+        margin-bottom: 5rem;
+    }
+
+    .top-bar {
+        display: none !important;
     }
 
 }

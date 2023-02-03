@@ -1,11 +1,10 @@
-import React, { useContext, useState } from "react";
-import { GlobalContext } from "../../../context/GlobalState";
+import React, { useState } from "react";
 import { TransactionService } from "../../../services/TransactionService";
 import { transactionData } from "../../../types/transactionData";
 import "./Transaction.css";
 
 const AddTransaction = () => {
-  const { user } = useContext(GlobalContext);
+  // const { user } = useContext(GlobalContext);
   const transTypesDataFromLS = localStorage["transType"];
   const transTypesData = transTypesDataFromLS
     ? JSON.parse(transTypesDataFromLS)
@@ -177,6 +176,10 @@ const AddTransaction = () => {
       </div>
       <div>
         <button>Fetch All Transaction</button>
+        <button>Fetch All Transaction</button>
+        <button>Fetch All Transaction</button>
+        <button>Fetch All Transaction</button>
+        <button>Fetch All</button>
       </div>
     </>
   );
