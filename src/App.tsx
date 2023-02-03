@@ -7,6 +7,7 @@ import AddTransaction from "./components/Layout/Transaction/AddTransaction";
 import Loading from "./components/Layout/ui/MySelect/Loading/Loading";
 import Dashboard from "./components/pages/Dashboard";
 import HomePage from "./components/pages/HomePage";
+import { NoMatch } from "./components/pages/NoMatch";
 import { GlobalContext } from "./context/GlobalState";
 import { AuthService } from "./services/AuthService";
 
@@ -16,36 +17,48 @@ function App() {
   const [isAuth, setIsAuth] = useState(alreadyLoggedIn);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { logInUser, addSite } = useContext(GlobalContext);
+  const { logInUser, addSite, user } = useContext(GlobalContext);
 
   const authService = async () => {
     setIsLoading(true);
     const res = await AuthService.auth();
     if (res && res.data.userData) {
-      if (logInUser) {
-        logInUser(res.data.userData);
-      }
-      if (addSite) {
-        addSite(res.data.siteData);
-      }
+      logInUser(res.data?.userData);
+      addSite(res.data?.siteData);
+      setIsAuth(true);
     }
+    // if (res && res.data.userData) {
+    //   if (logInUser) {
+    //     logInUser(res.data.userData);
+    //   }
+    //   if (addSite) {
+    //     addSite(res.data.siteData);
+    //   }
+    // }
     setIsLoading(false);
   };
 
   useEffect(() => {
-    authService();
-  }, []);
+    if (user) {
+      setIsAuth(true);
+    } else {
+      authService();
+    }
+  }, [user]);
 
   return (
     <>
       <Routes>
         <Route path="/login" element={<Login isAuth={isAuth} />} />
-        <Route path="/dashboard" element={<Dashboard isAuth={isAuth} />}>
-          {/* <Route path="transactions" element={<AddTransaction />} /> */}
-          <Route path="" element={<AddTransaction />} />
-          <Route path="" element={<DashboardHome />} />
-        </Route>
+        {isAuth && (
+          <Route path="/dashboard" element={<Dashboard />}>
+            {/* <Route path="transactions" element={<AddTransaction />} /> */}
+            <Route path="" element={<AddTransaction />} />
+            <Route path="" element={<DashboardHome />} />
+          </Route>
+        )}
         <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<NoMatch />} />
       </Routes>
       {isLoading && <Loading />}
     </>

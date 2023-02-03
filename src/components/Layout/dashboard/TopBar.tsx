@@ -38,6 +38,7 @@ const TopBar = () => {
             onClick={() => {
               if (logOutUser) {
                 logOutUser();
+                navigate("/login");
               }
             }}
           >
@@ -47,6 +48,7 @@ const TopBar = () => {
             onClick={() => {
               if (resetSite) {
                 resetSite();
+                navigate("/login");
               }
             }}
           >

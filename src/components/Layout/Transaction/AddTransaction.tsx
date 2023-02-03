@@ -91,7 +91,7 @@ const AddTransaction = () => {
               value="debit"
               onChange={handleChange}
             />
-            Debit
+            Debit +
           </label>
           <label htmlFor="credit" className="form-control">
             <input
@@ -101,7 +101,7 @@ const AddTransaction = () => {
               value="credit"
               onChange={handleChange}
             />
-            Credit
+            Credit -
           </label>
         </div>
 

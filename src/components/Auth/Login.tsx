@@ -21,7 +21,7 @@ const InitialLoginFromState = {
 const Login: React.FC<Props> = ({ isAuth }) => {
   const [loginFrom, setLoginFrom] = useState<any>(InitialLoginFromState);
   const [errorMessage, setErrorMessage] = useState("");
-
+  const [isLoading, setIsLoading] = useState(false);
   const { logInUser, user, addSite } = useContext(GlobalContext);
 
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const Login: React.FC<Props> = ({ isAuth }) => {
 
   const handleLoginButton = async () => {
     setErrorMessage("");
-    console.log(loginFrom);
+    setIsLoading(true);
     let res = await AuthService.login(loginFrom);
     if (res) {
       if (res.data.userData && res.data.siteData && logInUser && addSite) {
@@ -57,10 +57,11 @@ const Login: React.FC<Props> = ({ isAuth }) => {
     } else {
       setErrorMessage("Network Error");
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    if (user.username) {
+    if (user?.username) {
       if (location.search) {
         const { redirectTo } = convertSearchToObject(location.search);
         console.log(redirectTo);
@@ -91,6 +92,7 @@ const Login: React.FC<Props> = ({ isAuth }) => {
             placeholder="Enter your username"
             onChange={handleChange}
             value={loginFrom.username}
+            disabled={isLoading}
           />
           <input
             name="password"
@@ -98,9 +100,20 @@ const Login: React.FC<Props> = ({ isAuth }) => {
             placeholder="Enter your password"
             onChange={handleChange}
             value={loginFrom.password}
+            disabled={isLoading}
           />
           {errorMessage && <span>* {errorMessage} *</span>}
-          <button onClick={handleLoginButton}>Login</button>
+          <button onClick={handleLoginButton} disabled={isLoading}>
+            {isLoading ? (
+              <img
+                src="https://i.gifer.com/origin/b4/b4d657e7ef262b88eb5f7ac021edda87.gif"
+                alt="loading..."
+                height="20px"
+              />
+            ) : (
+              "Login"
+            )}
+          </button>
           <p>
             Powered by:{" "}
             <a href="https://sourcecode.build" rel="noreferrer" target="_blank">

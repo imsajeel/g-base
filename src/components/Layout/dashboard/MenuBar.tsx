@@ -12,10 +12,6 @@ import { useNavigate } from "react-router-dom";
 const MenuBar = () => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-  };
   return (
     <div className="menu-bar">
       <div className="menu-item" onClick={() => navigate("/dashboard")}>
@@ -35,9 +31,6 @@ const MenuBar = () => {
       </div>
       <div className="menu-item">
         <GoPerson />
-      </div>
-      <div className="menu-item" onClick={handleLogout}>
-        <GoSignOut />
       </div>
     </div>
   );

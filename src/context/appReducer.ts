@@ -13,13 +13,13 @@ type reducerActionTypes = { type: string; payload: any };
 const appReducer = (state: initialStateType, action: reducerActionTypes) => {
   switch (action.type) {
     case LOG_IN_USER:
-      updateLocalStorage("userToken", action.payload.token);
+      updateLocalStorage("userToken", action.payload?.token);
       return { ...state, user: action.payload };
     case LOG_OUT_USER:
       updateLocalStorage("userToken", "");
       return { ...state, user: "" };
     case ADD_SITE_DATA:
-      updateLocalStorage("siteCode", action.payload.siteCode);
+      updateLocalStorage("siteCode", action.payload?.siteCode);
       return { ...state, site: action.payload };
     case RESET_SITE:
       updateLocalStorage("userToken", "");

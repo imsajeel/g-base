@@ -11,13 +11,13 @@ import { userType, siteType } from "./globalState.types";
 export type initialStateType = {
   user: any;
   site: any;
-  logInUser?: (userData: userType) => void;
+  logInUser: (userData: userType) => void;
   logOutUser?: () => void;
   addSite?: (siteData: siteType) => void;
   resetSite?: () => void;
 };
 
-export const initialState: initialStateType = {
+export const initialState: any = {
   user: "",
   site: "",
 };
