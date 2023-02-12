@@ -103,7 +103,6 @@ const AddTransaction = () => {
             Credit -
           </label>
         </div>
-
         <label htmlFor="transactionType">Type: *</label>
         <select
           name="transactionType"
@@ -127,7 +126,6 @@ const AddTransaction = () => {
             <option value="sales-card">Sales Card</option>
           )}
         </select>
-
         <label htmlFor="remarks">Remarks:</label>
         <textarea
           name="remarks"

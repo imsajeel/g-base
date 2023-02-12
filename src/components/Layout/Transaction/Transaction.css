@@ -13,3 +13,30 @@
 .page-heading {
     grid-area: header;
 }
+
+
+/* ************************************************************* */
+
+.new-transaction input,
+.new-transaction select,
+.new-transaction textarea {
+    width: 100%;
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+}
+
+.transaction-type {
+    display: flex;
+}
+
+
+
+input {
+    padding: 1rem;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .transaction-type {
+        flex-wrap: wrap;
+    }
+}

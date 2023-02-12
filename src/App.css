@@ -2,7 +2,6 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-
 }
 
 :root {
@@ -74,6 +73,12 @@ button.transparent-bordered {
     background-color: transparent;
     border: 1px solid black;
     color: black;
+}
+
+button.big {
+    width: 100%;
+    padding: 2.5rem;
+    margin: 1rem;
 }
 
 button:hover {

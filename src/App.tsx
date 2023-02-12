@@ -4,6 +4,7 @@ import "./App.css";
 import Login from "./components/Auth/Login";
 import DashboardHome from "./components/Layout/dashboard/DashboardHome";
 import AddTransaction from "./components/Layout/Transaction/AddTransaction";
+import NewTransaction from "./components/Layout/Transaction/NewTransaction";
 import Loading from "./components/Layout/ui/MySelect/Loading/Loading";
 import Dashboard from "./components/pages/Dashboard";
 import HomePage from "./components/pages/HomePage";
@@ -53,7 +54,7 @@ function App() {
         {isAuth && (
           <Route path="/dashboard" element={<Dashboard />}>
             {/* <Route path="transactions" element={<AddTransaction />} /> */}
-            <Route path="" element={<AddTransaction />} />
+            <Route path="" element={<NewTransaction />} />
             <Route path="" element={<DashboardHome />} />
           </Route>
         )}
